@@ -4,11 +4,15 @@ flux-isa-diff — ISA Convergence CLI Tool
 
 Compare, diff, and analyze FLUX ISA definitions across the SuperInstance fleet.
 
-Sources:
+Embedded sources:
   - oracle1    : Oracle1's Python VM (opcodes.py, ~80 opcodes, variable-length)
   - jc1        : JetsonClaw1's C VM (unified opcodes, formats.py, ~67 opcodes)
   - babel      : Babel's multilingual (120 opcodes including 16 viewpoint ops)
   - converged  : isa_unified.py (247 opcodes — the target unified ISA)
+
+Fleet runtimes (10 active + 1 missing):
+  - flux-py, flux-js, flux-swarm, flux-core, flux-cuda, flux-java, flux-zig,
+    flux-vm-ts, greenhorn-runtime (Go+JS), flux-c (missing)
 
 Usage:
   flux-isa-diff list [--source SOURCE] [--category CAT] [--format FMT]
@@ -16,6 +20,9 @@ Usage:
   flux-isa-diff stats [--source SOURCE]
   flux-isa-diff converge
   flux-isa-diff verify
+  flux-isa-diff fleet-compare [--verbose]      # Compare all 11 runtimes vs converged ISA
+  flux-isa-diff fleet-list                  # List all fleet runtimes
+  flux-isa-diff report [--output FILE]         # Generate markdown convergence report
 
 Zero dependencies — Python stdlib only.
 """
